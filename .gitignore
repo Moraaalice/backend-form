@@ -1,2 +1,32 @@
+# Byte-compiled / optimized / DLL files
 __pycache__/
+*.py[cod]
+*$py.class
+
+# Django specific
 db.sqlite3
+*.log
+
+# Environment variables
+.env
+
+# Virtual environment
+venv/
+env/
+
+# VS Code or other editor folders
+.vscode/
+.idea/
+
+# macOS system files
+.DS_Store
+
+# Static/media (if generated)
+staticfiles/
+media/
+
+# Python packaging
+*.egg
+*.egg-info/
+dist/
+build/
