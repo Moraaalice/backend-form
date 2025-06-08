@@ -25,7 +25,7 @@ SECRET_KEY = 'u8m(r-ric^t6cwb(qc9r-ztj3xbxjfv1eg#=g7k@yg&r*p7992'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['backend-form-production.up.railway.app']
 
 
 # Application definition
