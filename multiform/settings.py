@@ -56,6 +56,8 @@ from corsheaders.defaults import default_headers
 
 CSRF_ALLOWED_ORIGINS = [
     'https://multi-step-form-app-gold.vercel.app/',
+    'http://localhost:3000',
+    'http://127.0.0.1:3000',
 ]
 
 CORS_ALLOW_ALL_ORIGINS = True
