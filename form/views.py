@@ -24,6 +24,7 @@ def save_data(data):
         json.dump(data, f, indent=4)
 
 # Endpoint to submit form data (POST) or get all submissions (GET)
+@csrf_exempt
 def submit_form(request):
     if request.method == 'POST':
         try:
