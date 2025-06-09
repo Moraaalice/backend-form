@@ -25,7 +25,7 @@ SECRET_KEY = 'u8m(r-ric^t6cwb(qc9r-ztj3xbxjfv1eg#=g7k@yg&r*p7992'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['backend-form-production.up.railway.app']
+ALLOWED_HOSTS = ['backend-form-production.up.railway.app','127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -41,7 +41,10 @@ INSTALLED_APPS = [
     'corsheaders',
 ]
 
+CORS_ALLOW_ALL_ORIGINS = True
+
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -49,18 +52,24 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
 ]
 from corsheaders.defaults import default_headers
 
-CSRF_ALLOWED_ORIGINS = [
+CSRF_TRUSTED_ORIGINS = [
+    'https://multi-step-form-app-gold.vercel.app',
+    'http://localhost:3000',
+    'http://127.0.0.1:3000',
+]
+
+CORS_ALLOWED_ORIGINS = [
     'https://multi-step-form-app-gold.vercel.app/',
     'http://localhost:3000',
     'http://127.0.0.1:3000',
 ]
 
-CORS_ALLOW_ALL_ORIGINS = True
+CSRF_ALLOWED_ORIGINS = CORS_ALLOWED_ORIGINS
+
 
 CORS_ALLOW_HEADERS = list(default_headers) + [
     "access-control-allow-origin",
