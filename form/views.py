@@ -67,12 +67,14 @@ def get_submission_by_id(request, submission_id):
 def update_submission(request, submission_id):
     if request.method == 'PUT':
         try:
+            print("Request body:", request.body)  # Debug log
+
             updated_data = json.loads(request.body) 
             data = load_data()
 
             for i, entry in enumerate(data):
                 if str(entry['id']) == str(submission_id): 
-                    updated_data['id'] = entry['id']  
+                    updated_data['id'] = entry['id']  # ensure ID is preserved
                     data[i] = updated_data
                     save_data(data)
                     return JsonResponse(updated_data, status=200)
@@ -80,8 +82,10 @@ def update_submission(request, submission_id):
             return JsonResponse({'error': 'Submission not found'}, status=404)
 
         except json.JSONDecodeError:
+            print("JSON Decode Error!")
             return JsonResponse({'error': 'Invalid JSON format'}, status=400)
         except Exception as e:
+            print("Unexpected error:", str(e))
             return JsonResponse({'error': str(e)}, status=500)
 
     return HttpResponseNotAllowed(['PUT'])
