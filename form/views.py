@@ -65,20 +65,27 @@ def get_submission_by_id(request, submission_id):
 
 @csrf_exempt
 def update_submission(request, submission_id):
-    if request.method == 'PUT':
-        try:
-            updated_data = json.loads(request.body)
-            data = load_data()
-            for i, entry in enumerate(data):
-                if entry['id'] == submission_id:
-                    updated_data['id'] = submission_id  # Ensure ID stays same
-                    data[i] = updated_data
-                    save_data(data)
-                    return JsonResponse({'message': 'Submission updated successfully'})
-            return JsonResponse({'error': 'Submission not found'}, status=404)
-        except Exception as e:
-            return JsonResponse({'error': str(e)}, status=400)
-    return HttpResponseNotAllowed(['PUT'])
+    if request.method != 'PUT':
+        return HttpResponseNotAllowed(['PUT'])
+
+    try:
+        data = json.loads(request.body)
+        all_data = load_data()
+
+        for i, entry in enumerate(all_data):
+            if entry['id'] == submission_id:
+                data['id'] = submission_id  # keep ID
+                all_data[i] = data
+                save_data(all_data)
+                return JsonResponse({'message': 'Updated successfully'})
+
+        return JsonResponse({'error': 'Submission not found'}, status=404)
+
+    except json.JSONDecodeError:
+        return JsonResponse({'error': 'Invalid JSON'}, status=400)
+    except Exception as e:
+        return JsonResponse({'error': str(e)}, status=500)
+
 
 
 

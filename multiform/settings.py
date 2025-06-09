@@ -77,7 +77,6 @@ CORS_ALLOW_HEADERS = list(default_headers) + [
 
 ]
 
-
 ROOT_URLCONF = 'multiform.urls'
 
 TEMPLATES = [
