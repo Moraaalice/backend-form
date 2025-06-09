@@ -63,7 +63,7 @@ CSRF_TRUSTED_ORIGINS = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    'https://multi-step-form-app-gold.vercel.app/',
+    'https://multi-step-form-app-gold.vercel.app',
     'http://localhost:3000',
     'http://127.0.0.1:3000',
 ]
