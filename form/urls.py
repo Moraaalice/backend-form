@@ -1,7 +1,6 @@
-# form/urls.py
 from django.urls import path
 from . import views
-
+# Below are the urls 
 urlpatterns = [
     path('submit/', views.submit_form, name='submit_form'),
     path('submit/<int:submission_id>/', views.get_submission_by_id, name='get_submission_by_id'),
