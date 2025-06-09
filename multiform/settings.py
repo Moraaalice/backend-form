@@ -72,7 +72,7 @@ CSRF_ALLOWED_ORIGINS = CORS_ALLOWED_ORIGINS
 
 
 CORS_ALLOW_HEADERS = list(default_headers) + [
-    "access-control-allow-origin",
+    'cache-control',
 ]
 
 
